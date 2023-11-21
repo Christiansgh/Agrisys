@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Agrisys.Models {
+namespace Agrisys.Data {
     public class IdentityContext: IdentityDbContext<IdentityUser> {
         public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options) { }

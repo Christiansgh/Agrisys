@@ -1,5 +1,5 @@
+using Agrisys.Data;
 using Microsoft.EntityFrameworkCore;
-using Agrisys.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

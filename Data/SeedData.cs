@@ -1,6 +1,7 @@
+using Agrisys.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Agrisys.Models {
+namespace Agrisys.Data {
     public static class SeedData {
         public static void EnsurePopulated(IApplicationBuilder app) {
             DatabaseContext context = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<DatabaseContext>();
