@@ -1,6 +1,7 @@
+using Agrisys.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Agrisys.Models {
+namespace Agrisys.Data {
     public class DatabaseContext : DbContext {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {}
 

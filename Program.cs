@@ -1,5 +1,6 @@
+using Agrisys.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Agrisys.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,15 @@ builder.Services.AddDbContext<DatabaseContext>(options => {
     options.UseSqlite(builder.Configuration.GetConnectionString("ConnectionString"));
     options.EnableSensitiveDataLogging();
 });
+
+// Configure the DbContext for Identity
+builder.Services.AddDbContext<IdentityContext>(opts => {
+    opts.UseSqlite(builder.Configuration.GetConnectionString("ConnectionString"));
+});
+
+// Configure ASP.NET Core Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<IdentityContext>();
 
 var app = builder.Build();
 
