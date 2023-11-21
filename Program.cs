@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Agrisys.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DatabaseContext>(options => {
+    options.UseSqlite(builder.Configuration.GetConnectionString("ConnectionString"));
+    options.EnableSensitiveDataLogging();
+});
 
 var app = builder.Build();
 
@@ -23,5 +30,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+SeedData.EnsurePopulated(app);
 
 app.Run();
