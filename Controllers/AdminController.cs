@@ -23,7 +23,7 @@ public class AdminController : Controller {
 
     // GET: Admin/CreateUser
     public IActionResult CreateUser() {
-        var model = new CreateUserViewModel {
+        var model = new UserViewModel {
             Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList()
         };
 
@@ -32,7 +32,7 @@ public class AdminController : Controller {
 
     // POST: Admin/CreateUser
     [HttpPost]
-    public async Task<IActionResult> CreateUser(CreateUserViewModel model) {
+    public async Task<IActionResult> CreateUser(UserViewModel model) {
         if (ModelState.IsValid) {
             var user = new IdentityUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -54,15 +54,15 @@ public class AdminController : Controller {
 
         return View(model);
     }
+    
+    public async Task<IActionResult> EditUser(string id) {
+        var user = await _userManager.FindByIdAsync(id);
+        // TODO: need to figure this out ._.
 
-    // Example methods, details need to be filled in
-    public Task EditUser(string id) {
-        // Logic to retrieve user and return an edit view
-        Console.WriteLine(id);
-        return Task.CompletedTask;
+        return View();
     }
 
-    // GET: Admin/DeleteUser/
+    // GET: Admin/DeleteUser/{id}
     public async Task<IActionResult> DeleteUser(string id) {
         var user = await _userManager.FindByIdAsync(id);
         if (user != null) {
