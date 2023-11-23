@@ -1,16 +1,18 @@
 ﻿using Agrisys.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Agrisys.Controllers;
 
 public class AdminController : Controller {
     private readonly UserManager<IdentityUser> _userManager;
-    // Constructor to inject UserManager
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AdminController(UserManager<IdentityUser> userManager) {
+    public AdminController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) {
         _userManager = userManager;
+        _roleManager = roleManager;
     }
 
     // GET: Admin/Index or Admin/ListUsers
@@ -21,19 +23,24 @@ public class AdminController : Controller {
 
     // GET: Admin/CreateUser
     public IActionResult CreateUser() {
-        return View();
+        var model = new CreateUserViewModel {
+            Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList()
+        };
+
+        return View(model);
     }
 
     // POST: Admin/CreateUser
     [HttpPost]
     public async Task<IActionResult> CreateUser(CreateUserViewModel model) {
         if (ModelState.IsValid) {
-            var user = new IdentityUser
-                { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
+            var user = new IdentityUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
             var result = await _userManager.CreateAsync(user, model.Password);
 
-            if (result.Succeeded) {
-                return View("Index");
+            if (result.Succeeded && !string.IsNullOrEmpty(model.SelectedRole))
+            {
+                await _userManager.AddToRoleAsync(user, model.SelectedRole);
+                return RedirectToAction("Index");
             }
 
             foreach (var error in result.Errors) {
@@ -41,6 +48,9 @@ public class AdminController : Controller {
                 Console.WriteLine(error.Description);
             }
         }
+        
+        // Repopulate roles if returning to form
+        model.Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList();
 
         return View(model);
     }
@@ -52,7 +62,7 @@ public class AdminController : Controller {
         return Task.CompletedTask;
     }
 
-    // GET: Admin/DeleteUser/5
+    // GET: Admin/DeleteUser/
     public async Task<IActionResult> DeleteUser(string id) {
         var user = await _userManager.FindByIdAsync(id);
         if (user != null) {
