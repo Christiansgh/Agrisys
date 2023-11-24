@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HovedMenu</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div>
+        Dette er vores Fordeler
+    </div>
+
+    <section id="menu">
+        <div class="container">
+            <div class="container-lg">
+                <div class="row justify-content-center class align-items-center">
+                    <div class="col-md-5 text-center text-md-start">
+                        <div class="container">
+                            <a class="btn btn-primary mt-3" asp-action="Silo">Silo</a>
+
+
+                            <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
+
+
+                            <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
+                            <div class="container">
+                                <br>
+                                <br>
+                                <button class=" btn btn-lg btn-danger">Stop!</button>
+                                <button class=" btn btn-lg btn-success">Start</button>
+
+                            </div>
+                            <br>
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Blæser</button>
+
+                                <button class="btn btn-sm btn-secondary">Vægt</button>
+
+                                <button class="btn btn-sm btn-secondary">Portion</button>
+                            </div>
+                            <br>
+                            <div class="container">
+
+                                <button class="btn btn-sm btn-secondary">op</button>
+                                <button class="btn btn-sm btn-secondary">ned</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <img class="img-fluid" src="/images/foderkøkken.jpg">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
