@@ -35,10 +35,9 @@ public class AdminController : Controller {
     public async Task<IActionResult> CreateUser(UserViewModel model) {
         if (ModelState.IsValid) {
             var user = new IdentityUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password!);
 
-            if (result.Succeeded && !string.IsNullOrEmpty(model.SelectedRole))
-            {
+            if (result.Succeeded && !string.IsNullOrEmpty(model.SelectedRole)) {
                 await _userManager.AddToRoleAsync(user, model.SelectedRole);
                 return RedirectToAction("Index");
             }
@@ -57,9 +56,63 @@ public class AdminController : Controller {
     
     public async Task<IActionResult> EditUser(string id) {
         var user = await _userManager.FindByIdAsync(id);
-        // TODO: need to figure this out ._.
+        var model = new UserViewModel {
+            Id = id,
+            Email = user!.Email,
+            PhoneNumber = user.PhoneNumber,
+            Roles = await _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToListAsync()
+        };
 
-        return View();
+        // If you need to set the selected role
+        var userRoles = await _userManager.GetRolesAsync(user);
+        if (userRoles.Any()) {
+            model.SelectedRole = userRoles.First();  // Assuming single role for simplicity
+        }
+
+        return View(model);
+    }
+    
+    // POST: Admin/EditUser/{id}
+    [HttpPost]
+    public async Task<IActionResult> EditUser(UserViewModel model) {
+        if (!ModelState.IsValid) {
+            return View(model);
+        }
+        
+        // Find user in db with given id
+        var user = await _userManager.FindByIdAsync(model.Id!); // If user manually types wrong id in url it can be null
+        
+        // Check if user with given id exists
+        if (user == null) {
+            ModelState.AddModelError("", "User not found.");
+            return View(model);
+        }
+
+        // Update user properties
+        user.Email = model.Email;
+        user.PhoneNumber = model.PhoneNumber;
+        
+        // Update the user
+        var result = await _userManager.UpdateAsync(user);
+
+        if (result.Succeeded) {
+            // Check if a new role was actually selected (if not, user keeps previous role)
+            if (!string.IsNullOrEmpty(model.SelectedRole)) {
+                // Handle role assignment
+                var currentRoles = await _userManager.GetRolesAsync(user);
+                await _userManager.RemoveFromRolesAsync(user, currentRoles); // remove past role
+                await _userManager.AddToRoleAsync(user, model.SelectedRole); // add current role
+            }
+
+            return RedirectToAction("Index");
+        }
+        
+        // If there are errors, add them to the ModelState
+        foreach (var error in result.Errors) {
+            ModelState.AddModelError("", error.Description);
+        }
+
+        return View(model);
     }
 
     // GET: Admin/DeleteUser/{id}
