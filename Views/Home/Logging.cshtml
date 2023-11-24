@@ -5,7 +5,8 @@
 <div class="text-center">
     <h1 class="display-4">Log</h1>
     <br>
-    <table class="table table-bordered table-striped">
+    <input type="text" id="searchbox" placeholder="Search...">
+    <table id="logtable" class="table table-bordered table-striped">
         <tr>
             <th>Tidspunkt</th>
             <th>Foo</th>
@@ -37,4 +38,34 @@
             <td>FODRING</td>
         </tr>
     </table>
+
+    <script>
+        let input = document.getElementById('searchbox');
+        let table = document.getElementById('logtable');
+        let rows = table.getElementsByTagName('tr');
+
+        input.addEventListener('keyup', function() {
+            let filter = input.value.toLowerCase();
+
+            for (let i = 1; i < rows.length; i++) {
+                let row = rows[i];
+                let rowData = row.getElementsByTagName('td');
+
+                let display = false;
+                for (let j = 0; j < rowData.length; j++) {
+                    let cell = rowData[j];
+                    if (cell && cell.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                        display = true;
+                        break;
+                    }
+                }
+
+                if (display) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </div>
