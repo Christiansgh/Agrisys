@@ -4,41 +4,46 @@
 
 <div class="text-center">
     <h1 class="display-4">Log</h1>
-    <br>
     <input type="text" id="searchbox" placeholder="Search...">
-    <table id="logtable" class="table table-bordered table-striped">
-        <tr>
-            <th>Tidspunkt</th>
-            <th>Foo</th>
-            <th>Bar</th>
-            <th>Kommando</th>
-        </tr>
-        <tr>
-            <td>21/11/2023 11:20:00</td>
-            <td>Benjamin</td>
-            <td>3 kg</td>
-            <td>FODRING</td>
-        </tr>
-        <tr>
-            <td>21/11/2023 11:21:13</td>
-            <td>Christian</td>
-            <td>5 kg</td>
-            <td>FODRING</td>
-        </tr>
-        <tr>
-            <td>21/11/2023 11:23:07</td>
-            <td>Mikkel</td>
-            <td>3 kg</td>
-            <td>FODRING</td>
-        </tr>
-        <tr>
-            <td>21/11/2023 11:24:58</td>
-            <td>Stefan</td>
-            <td>3 kg</td>
-            <td>FODRING</td>
-        </tr>
+    <br>
+    <br>
+    <h1>@ViewData["SomeData"]</h1>
+    <table id="logtable" class="sortable table table-bordered table-striped">
+        <thead>
+            <tr>
+            @for (var i = 0; i < (int)(ViewData["LogColumnCount"]); i++)
+            {
+                    <th>Column @i</th>
+            }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in ViewData["LogRows"] as List<List<string>>)
+            {
+                <tr>
+                    @foreach (var col in row as List<string>)
+                    {
+                        <td>@col</td>
+                    }
+                </tr>
+            }
+        </tbody>
     </table>
 
+    <style>
+        /* https://www.w3schools.com/charsets/ref_utf_arrows.asp */
+        th[aria-sort="ascending"]::after {
+            content: " \2191";
+        }
+        th[aria-sort="descending"]::after {
+            content: " \2193";
+        }
+    </style>
+
+    <!-- Sorting -->
+    <script src="https://cdn.jsdelivr.net/gh/tofsjonas/sortable@latest/sortable.min.js"></script>
+
+    <!-- Searching -->
     <script>
         let input = document.getElementById('searchbox');
         let table = document.getElementById('logtable');
