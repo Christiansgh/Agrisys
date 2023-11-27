@@ -114,9 +114,25 @@ public class AdminController : Controller {
 
         return View(model);
     }
+    
+    // GET: Admin/ConfirmDeleteUser/{id}
+    public async Task<IActionResult> ConfirmDeleteUser(string id) {
+        var user = await _userManager.FindByIdAsync(id);
+        if (user == null) {
+            return NotFound();
+        }
+        
+        var viewModel = new UserViewModel {
+            Email = user.Email,
+        };
 
-    // GET: Admin/DeleteUser/{id}
-    public async Task<IActionResult> DeleteUser(string id) {
+        return View(viewModel);
+    }
+    
+    // POST: Admin/DeleteUser/{id}
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteUserConfirmed(string id) {
         var user = await _userManager.FindByIdAsync(id);
         if (user != null) {
             await _userManager.DeleteAsync(user);
