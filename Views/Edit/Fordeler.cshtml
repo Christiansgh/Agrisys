@@ -28,32 +28,31 @@
                             <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
 
 
-                            <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
+                            <a class="btn btn-primary btn-lg mt-3 active" asp-action="Fordeler">Fordeler</a>
                             <div class="container">
                                 <br>
                                 <br>
-                                <button class=" btn btn-lg btn-danger">Stop!</button>
-                                <button class=" btn btn-lg btn-success">Start</button>
+                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
+                                <button class=" btn btn-lg btn-success">OK</button>
 
                             </div>
+                            <br>
+
                             <br>
                             <div class="container">
                                 <button class="btn btn-sm btn-secondary">Blæser</button>
+                                @Html.DropDownList("Id", ViewBag.BlæserSelectedList as SelectList,
+                                "Indstil lufttryk", new { @class ="form-control"})
 
-                                <button class="btn btn-sm btn-secondary">Vægt</button>
-
-                                <button class="btn btn-sm btn-secondary">Portion</button>
                             </div>
                             <br>
-                            <div class="container">
-
-                                <button class="btn btn-sm btn-secondary">op</button>
-                                <button class="btn btn-sm btn-secondary">ned</button>
-                            </div>
+                           
+                            <br>
+                           
                         </div>
                     </div>
                     <div class="col-md-5 text-center">
-                        <img class="img-fluid" src="/images/foderkøkken.jpg">
+                        <img class="img-fluid" src="/images/Fordelerfoderkøkken.jpg">
                     </div>
 
                 </div>

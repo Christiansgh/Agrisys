@@ -22,7 +22,7 @@
                 <div class="row justify-content-center class align-items-center">
                     <div class="col-md-5 text-center text-md-start">
                         <div class="container">
-                            <a class="btn btn-primary mt-3" asp-action="Silo">Silo</a>
+                            <a class="btn btn-primary btn-lg mt-3 active" asp-action="Silo">Silo</a>
 
 
                             <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
@@ -32,29 +32,29 @@
                             <div class="container">
                                 <br>
                                 <br>
-                                <button class=" btn btn-lg btn-danger">Stop!</button>
-                                <button class=" btn btn-lg btn-success">Start</button>
+                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
+                                <button type="submit">"OK"</button>
 
                             </div>
                             <br>
                             <div class="container">
-                                 <button class="btn btn-sm btn-secondary">SiloNr</button>
+                                 <button class="btn btn-sm btn-secondary">Silo Nr</button>
                                 @Html.DropDownList("Id", ViewBag.FoderSelectedList as SelectList,
                                 "Vælg Silo", new { @class ="form-control"})   
-                                <button class="btn btn-sm btn-secondary">Total vægt</button>
-                                
-                                <button class="btn btn-sm btn-secondary">Portion</button>
                             </div>
-                            <br>
-                            <div class="container">
 
-                                <button class="btn btn-sm btn-secondary">op</button>
-                                <button class="btn btn-sm btn-secondary">ned</button>
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Portion</button> 
+                                @Html.DropDownList("Nr", ViewBag.PortionSelectedList as SelectList,
+                                "Vælg portion", new { @class ="form-control"})
+                                <br>
+                                <button class="btn btn-sm btn-secondary">Total vægt</button>
                             </div>
+                                                        
                         </div>
                     </div>
                     <div class="col-md-5 text-center">
-                        <img class="img-fluid" src="/images/foderkøkken.jpg">
+                        <img class="img-fluid" src="/images/SiloFoderkøkken.jpg">
                     </div>
 
                 </div>
