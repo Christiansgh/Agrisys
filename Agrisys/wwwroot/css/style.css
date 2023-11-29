@@ -43,7 +43,6 @@ nav a:hover {
 }
 
 
-
 body {
     background-color: var(--offwhite);
     margin: 0;
@@ -51,14 +50,25 @@ body {
 }
 
 
-.system {
+#system {
     margin-top: 83px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.silo {
+.system-text {
+    font-family: "lato";
+    font-size: 25px;
+    background-color: var(--offwhite);
+    border-style: solid;
+    border-width: thin;
+    position: fixed;
+    z-index: 1;
+    padding: 3px;
+}
+
+#silo img {
     position: fixed;
     filter: invert(76%) sepia(57%) saturate(1527%) hue-rotate(54deg) brightness(86%) contrast(96%);
     opacity: 0.8;
@@ -67,81 +77,102 @@ body {
     transform: scale(2);
 }
 
-.silopipe {
+#silo .system-text {
+    left: 5.1%;
+    top: 15%;
+}
+
+#silopipe {
     position: fixed;
     top: 32.5%;
-    left: 9.9%;
+    left: 10.30%;
 }
 
 
-.mixer {
+#mixer img {
     filter: invert(91%) sepia(93%) saturate(2399%) hue-rotate(322deg) brightness(104%) contrast(95%);
     position: fixed;
     opacity: 0.8;
     left: 25%;
     top: 52%;
     transform: scale(2);
-    z-index: 1;
 }
 
-.hatch {
+#mixer .system-text {
+    left: 25.7%;
+    top: 48.5%;
+}
+
+#hatch {
     position: fixed;
     top: 60%;
     left: 22.5%;
 }
 
-.distributor {
+#hatch2 {
+    position: fixed;
+    top: 82.2%;
+    left: 22.5%;
+}
+
+#distributor img {
     filter: invert(27%) sepia(82%) saturate(1666%) hue-rotate(344deg) brightness(98%) contrast(89%);
     opacity: 0.8;
     position: fixed;
     top: 74%;
     left: 25%;
     transform: scale(2);
-    z-index: 1;
 }
 
-.pressure {
+#distributor .system-text {
+    left: 24.5%;
+    top: 70.5%;
+}
+
+#pressure img {
     position: fixed;
-    top: 82%;
+    top: 83.5%;
     left: 15%;
     transform: scale(2);
 }
 
-.fan {
-    position: fixed;
-    top: 82%;
-    left: 3%;
-    transform: scale(2);
+#pressure .system-text {
+    left: 15%;
+    top: 83%;
 }
 
-.target {
+#fan img {
+    position: fixed;
+    top: 88%;
+    left: 3.3%;
+    transform: scale(2);
+    z-index: 1;
+}
+
+#fan .system-text {
+    left: 3.3%;
+    top: 86.5%;
+}
+
+#fanpipe {
+    position: fixed;
+    top: 62.9%;
+    left: 8.4%;
+}
+
+#target img {
     position: fixed;
     top: 87%;
     left: 45%;
     transform: scale(2);
 }
 
-.button-active {
-    width: 60px;
-    height: 60px;
-    display: inline-block;
-    background-color: var(--lightblue);
-    border-radius: 15px;
-    padding: 5px 5px;
-    color: var(--offwhite);
-    transition: 0.3s;
+#target .system-text {
+    left: 47%;
+    top: 85%;
 }
 
-.complete {
-}
-
-.in-progress {
-}
-
-.awaiting {
-}
-
-.logbackground {
+#logbackground {
     border-top-style: solid;
     border-color: var(--blue);
     border-width: thin;

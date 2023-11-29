@@ -8,7 +8,7 @@ Layout = "_Base";
         </a>
         <img src="/svg/navbar/bar.svg" />
 
-        <a href="/Edit/" >
+        <a href="/Edit/">
             <img src="/svg/navbar/edit.svg" />
         </a>
         <img src="/svg/navbar/bar.svg" />
@@ -37,31 +37,38 @@ Layout = "_Base";
         </a>
     </ul>
 </nav>
-<div class="system">
+<div id="system">
     <div>
-        <div>
-            <img class="silo" src="svg/system/silo.svg" alt="a silo" width="75">
-            <img class="silopipe" src="svg/system/silopipe.svg" alt="a silopipe" width="300">
+        <div id="silo">
+            <img src="/svg/system/silo.svg" alt="a silo" width="75">
+            <div class="system-text">Silo 1</div>
         </div>
-        <div>
-            <img class="mixer" src="svg/system/hopper.svg" alt="a hopper" width="100">
-            <img class="hatch" src="svg/system/hatch.svg" alt="a hatch" width="235">
+        <img id="silopipe" src="/svg/system/silopipe.svg" alt="a silopipe" width="300">
+        <div id="mixer">
+            <img src="/svg/system/hopper.svg" alt="a hopper" width="100">
+            <div class="system-text">Mixer</div>
         </div>
-        <div>
-            <img class="distributor" src="svg/system/hopper.svg" alt="a hopper" width="100">
-            <img class="hatch" src="svg/system/hatch.svg" alt="a hatch" width="235">
+        <img id="hatch" src="/svg/system/hatch.svg" alt="a hatch" width="235">
+        <div id="distributor">
+            <img src="/svg/system/hopper.svg" alt="a hopper" width="100">
+            <div class="system-text">Distributor</div>
         </div>
-        <div>
-            <img class="pressure" src="svg/system/pressure.svg" alt="a pressure sensor" width="100">
+        <img id="hatch2" src="/svg/system/hatch.svg" alt="a hatch" width="235">
+        <div id="pressure">
+            <img src="/svg/system/pressure.svg" alt="a pressure sensor" width="100">
+            <div class="system-text">Barmåler</div>
         </div>
-        <div>
-            <img class="fan" src="svg/system/fan.svg" alt="a fan" width="75">
+        <div id="fan">
+            <img src="/svg/system/fan.svg" alt="a fan" width="75">
+            <div class="system-text">Blæser</div>
         </div>
-        <div>
-            <img class="target" src="svg/system/target.svg" alt="the target" width="150">
+        <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe" width="640">
+        <div id="target">
+            <img src="/svg/system/target.svg" alt="the target" width="150">
+            <div class="system-text">Target</div>
         </div>
     </div>
-    <div class="logbackground">
+    <div id="logbackground">
         <p style="line-height: 4; margin-left: 25px">
             [2023-11-27 12:34:56] INFO: Application started. <br>
             [2023-11-27 12:35:02] WARNING: Connection timeout. <br>
