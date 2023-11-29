@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Agrisys.Logger {
     public static class Logger {
-        private static string Path { get; set; }
+        private static string Path { get; set; } = "";
 
         public static void Init(string path) {
             Path = path;
@@ -15,6 +15,16 @@ namespace Agrisys.Logger {
                     stream.WriteLine(text);
                 }
             }
+        }
+
+        public static List<List<string>> ReadLines() {
+            var lines = File.ReadAllLines(Path);
+            var output = new List<List<string>>();
+            foreach (var line in lines) {
+                output.Add(new List<string>(line.Split('|')));
+            }
+
+            return output;
         }
     }
 }
