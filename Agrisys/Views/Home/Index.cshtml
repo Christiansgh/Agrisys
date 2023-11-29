@@ -1,8 +1,75 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+Layout = "_Base";
 }
+<nav>
+    <ul>
+        <a href="/" class="active">
+            <img src="/svg/navbar/home.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <a href="/Edit/" >
+            <img src="/svg/navbar/edit.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Target/">
+            <img src="/svg/navbar/target.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Admin/">
+            <img src="/svg/navbar/admin.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Language/">
+            <img src="/svg/navbar/language.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Log/">
+            <img src="/svg/navbar/log.svg" />
+        </a>
+
+        <a href="/Login/" style="float: right;">
+            <img src="/svg/navbar/logout.svg" />
+        </a>
+    </ul>
+</nav>
+<div class="system">
+    <div>
+        <div>
+            <img class="silo" src="svg/system/silo.svg" alt="a silo" width="75">
+            <img class="silopipe" src="svg/system/silopipe.svg" alt="a silopipe" width="300">
+        </div>
+        <div>
+            <img class="mixer" src="svg/system/hopper.svg" alt="a hopper" width="100">
+            <img class="hatch" src="svg/system/hatch.svg" alt="a hatch" width="235">
+        </div>
+        <div>
+            <img class="distributor" src="svg/system/hopper.svg" alt="a hopper" width="100">
+            <img class="hatch" src="svg/system/hatch.svg" alt="a hatch" width="235">
+        </div>
+        <div>
+            <img class="pressure" src="svg/system/pressure.svg" alt="a pressure sensor" width="100">
+        </div>
+        <div>
+            <img class="fan" src="svg/system/fan.svg" alt="a fan" width="75">
+        </div>
+        <div>
+            <img class="target" src="svg/system/target.svg" alt="the target" width="150">
+        </div>
+    </div>
+    <div class="logbackground">
+        <p style="line-height: 4; margin-left: 25px">
+            [2023-11-27 12:34:56] INFO: Application started. <br>
+            [2023-11-27 12:35:02] WARNING: Connection timeout. <br>
+            [2023-11-27 12:36:18] ERROR: Database connection failed. <br>
+            [2023-11-27 12:37:45] INFO: User logged in (username: johndoe). <br>
+            [2023-11-27 12:38:20] DEBUG: Processing data complete. <br>
+            [2023-11-27 12:39:55] ERROR: File not found: example.txt. <br>
+            [2023-11-27 12:40:10] INFO: Application closed. <br>
+        </p>
+    </div>
 </div>
