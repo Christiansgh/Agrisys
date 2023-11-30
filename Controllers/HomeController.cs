@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Agrisys.Models;
+using Agrisys.Utils;
 
 namespace Agrisys.Controllers;
 
@@ -20,6 +21,14 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
+        return View();
+    }
+
+    public IActionResult Logging()
+    {
+        var logData = Logger.Read();
+        ViewData["LogColumnCount"] = logData.columnCount;
+        ViewData["LogRows"] = logData.data;
         return View();
     }
 
