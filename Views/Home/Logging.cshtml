@@ -11,10 +11,11 @@
     <table id="logtable" class="sortable table table-bordered table-striped">
         <thead>
             <tr>
-            @for (var i = 0; i < (int)(ViewData["LogColumnCount"]); i++)
-            {
+                <th>Tidspunkt</th>
+                @for (var i = 0; i < (int)(ViewData["LogColumnCount"]); i++)
+                {
                     <th>Column @i</th>
-            }
+                }
             </tr>
         </thead>
         <tbody>

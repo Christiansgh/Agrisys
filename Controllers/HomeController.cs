@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Agrisys.Models;
+using Agrisys.Utils;
 
 namespace Agrisys.Controllers;
 
@@ -25,16 +26,9 @@ public class HomeController : Controller
 
     public IActionResult Logging()
     {
-        List<List<string>> rows = new() {
-            new() {"2023-11-26", "Benjamin", "FODRING" },
-            new() {"2023-11-25", "Christian", "POOPING :D" },
-            new() {"2023-11-27", "Mikkel", "MEMEING" },
-            new() {"2023-11-25", "Christian", "FARTING" },
-            new() {"2023-11-30", "Flemming", "STORYTELLING" },
-        };
-
-        ViewData["LogColumnCount"] = 4;
-        ViewData["LogRows"] = rows;
+        var logData = Logger.Read();
+        ViewData["LogColumnCount"] = logData.columnCount;
+        ViewData["LogRows"] = logData.data;
         return View();
     }
 
