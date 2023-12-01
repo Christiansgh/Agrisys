@@ -1,10 +1,83 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@model IEnumerable<string>
+@{
+Layout = "_Base";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<nav>
+    <ul>
+        <a asp-action="Index" asp-controller="Home">
+            <img src="/svg/navbar/home.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Edit" class="active">
+            <img src="/svg/navbar/edit.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Target">
+            <img src="/svg/navbar/target.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Admin">
+            <img src="/svg/navbar/admin.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Language">
+            <img src="/svg/navbar/language.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Logging">
+            <img src="/svg/navbar/log.svg" />
+        </a>
+
+        <a asp-action="Index" asp-controller="Login" style="float: right;">
+            <img src="/svg/navbar/logout.svg" />
+        </a>
+    </ul>
+</nav>
+<div id="system">
+    <div>
+        <div id="silo">
+            <img src="/svg/system/silo.svg" alt="a silo" width="75">
+            <div class="system-text">Silo 1</div>
+        </div>
+        <img id="silopipe" src="/svg/system/silopipe.svg" alt="a silopipe" width="300">
+        <div id="mixer">
+            <img src="/svg/system/hopper.svg" alt="a hopper" width="100">
+            <div class="system-text">Mixer</div>
+        </div>
+        <img id="hatch" src="/svg/system/hatch.svg" alt="a hatch" width="235">
+        <div id="distributor">
+            <img src="/svg/system/hopper.svg" alt="a hopper" width="100">
+            <div class="system-text">Distributor</div>
+        </div>
+        <img id="hatch2" src="/svg/system/hatch.svg" alt="a hatch" width="235">
+        <div id="pressure">
+            <img src="/svg/system/pressure.svg" alt="a pressure sensor" width="100">
+            <div class="system-text">Barm�ler</div>
+        </div>
+        <div id="fan">
+            <img src="/svg/system/fan.svg" alt="a fan" width="75">
+            <div class="system-text">Bl�ser</div>
+        </div>
+        <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe" width="640">
+        <div id="target">
+            <img src="/svg/system/target.svg" alt="the target" width="150">
+            <div class="system-text">Target</div>
+        </div>
+    </div>
+    <div id="logbackground" >
+            <ul>
+                 @foreach (string message in Model!) {
+                    <li> @message </li>
+                }
+            </ul>
+        }
+    </div>
 </div>
 <div>
     <a asp-action="HovedMenu">Hovedmenu</a>

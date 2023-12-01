@@ -1,0 +1,112 @@
+@{
+Layout = "_Base";
+}
+<nav>
+    <ul>
+        <a asp-action="Index" asp-controller="Home">
+            <img src="/svg/navbar/home.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Edit">
+            <img src="/svg/navbar/edit.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Target">
+            <img src="/svg/navbar/target.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Admin">
+            <img src="/svg/navbar/admin.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Language">
+            <img src="/svg/navbar/language.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a asp-action="Index" asp-controller="Logging" class="active">
+            <img src="/svg/navbar/log.svg" />
+        </a>
+
+        <a asp-action="Index" asp-controller="Login" style="float: right;">
+            <img src="/svg/navbar/logout.svg" />
+        </a>
+    </ul>
+</nav>
+
+<div class="text-center">
+    <h1 class="display-4">Log</h1>
+    <input type="text" id="searchbox" placeholder="Search...">
+    <br>
+    <br>
+    <h1>@ViewData["SomeData"]</h1>
+    <table id="logtable" class="sortable table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Tidspunkt</th>
+                @for (var i = 0; i < (int)(ViewData["LogColumnCount"]); i++) { <th>Column @i</th>
+                    }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in ViewData["LogRows"] as List<List<string>>)
+                {
+                <tr>
+                    @foreach (var col in row as List<string>)
+                        {
+                        <td>@col</td>
+                        }
+                </tr>
+                }
+        </tbody>
+    </table>
+
+    <style>
+        /* https://www.w3schools.com/charsets/ref_utf_arrows.asp */
+        th[aria-sort="ascending"]::after {
+            content: " \2191";
+        }
+
+        th[aria-sort="descending"]::after {
+            content: " \2193";
+        }
+    </style>
+
+    <!-- Sorting -->
+    <script src="https://cdn.jsdelivr.net/gh/tofsjonas/sortable@latest/sortable.min.js"></script>
+
+    <!-- Searching -->
+    <script>
+        let input = document.getElementById('searchbox');
+        let table = document.getElementById('logtable');
+        let rows = table.getElementsByTagName('tr');
+
+        input.addEventListener('keyup', function () {
+            let filter = input.value.toLowerCase();
+
+            for (let i = 1; i < rows.length; i++) {
+                let row = rows[i];
+                let rowData = row.getElementsByTagName('td');
+
+                let display = false;
+                for (let j = 0; j < rowData.length; j++) {
+                    let cell = rowData[j];
+                    if (cell && cell.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                        display = true;
+                        break;
+                    }
+                }
+
+                if (display) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</div>
