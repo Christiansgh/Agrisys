@@ -1,3 +1,4 @@
+@model IEnumerable<string>
 @{
 Layout = "_Base";
 }
@@ -68,15 +69,12 @@ Layout = "_Base";
             <div class="system-text">Target</div>
         </div>
     </div>
-    <div id="logbackground">
-        <p style="line-height: 4; margin-left: 25px">
-            [2023-11-27 12:34:56] INFO: Application started. <br>
-            [2023-11-27 12:35:02] WARNING: Connection timeout. <br>
-            [2023-11-27 12:36:18] ERROR: Database connection failed. <br>
-            [2023-11-27 12:37:45] INFO: User logged in (username: johndoe). <br>
-            [2023-11-27 12:38:20] DEBUG: Processing data complete. <br>
-            [2023-11-27 12:39:55] ERROR: File not found: example.txt. <br>
-            [2023-11-27 12:40:10] INFO: Application closed. <br>
-        </p>
+    <div id="logbackground" >
+            <ul>
+                 @foreach (string message in Model!) {
+                    <li> @message </li>
+                }
+            </ul>
+        }
     </div>
 </div>

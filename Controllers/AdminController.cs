@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agrisys.Controllers;
 
-public class EditController : Controller {
+public class AdminController : Controller {
     public ViewResult Index() {
         return View("Unimplemented");
     }
 }
+
