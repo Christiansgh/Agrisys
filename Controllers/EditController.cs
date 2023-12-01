@@ -122,7 +122,7 @@ public class EditController : Controller
 
         return Hastighed;
     }
-        public ViewResult HovedMenu()
+        public ViewResult Index()
     {
         return View();
     }
@@ -189,4 +189,5 @@ public class EditController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
 }
