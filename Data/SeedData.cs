@@ -1,4 +1,5 @@
 using Agrisys.Models;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,18 +11,8 @@ namespace Agrisys.Data {
             if (context.Database.GetPendingMigrations().Any()) {
                 context.Database.Migrate();
             }
-
-            if (!context.Users.Any()) {
-                context.Users.AddRange(
-                    new User {
-                        Id = 69,
-                    }
-                );
-
-                context.SaveChanges();
-            }
         }
-        
+
         public static void SeedRoles(RoleManager<IdentityRole> roleManager) {
             if (!roleManager.RoleExistsAsync("Admin").Result) {
                 var role = new IdentityRole {
