@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agrisys.Data {
     public static class SeedData {
+        
+        /*
         public static void EnsurePopulated(IApplicationBuilder app) {
             DatabaseContext context = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<DatabaseContext>();
 
@@ -21,6 +23,7 @@ namespace Agrisys.Data {
                 context.SaveChanges();
             }
         }
+        */
         
         public static void SeedRoles(RoleManager<IdentityRole> roleManager) {
             if (!roleManager.RoleExistsAsync("Admin").Result) {
