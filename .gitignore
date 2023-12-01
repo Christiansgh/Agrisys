@@ -5,6 +5,8 @@
 
 Log/
 
+*.db*
+
 # User-specific files
 *.rsuser
 *.suo

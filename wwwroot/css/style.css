@@ -183,3 +183,9 @@ body {
     float: right;
     filter: drop-shadow(15px 15px 25px #444444);
 }
+
+#logbackground li {
+    font-size: 20px;
+    margin-top: 20px;
+    list-style-type: none;
+}
