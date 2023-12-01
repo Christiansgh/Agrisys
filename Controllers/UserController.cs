@@ -6,22 +6,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agrisys.Controllers;
 
-public class AdminController : Controller {
+public class UserController : Controller {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AdminController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) {
+    public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) {
         _userManager = userManager;
         _roleManager = roleManager;
     }
 
-    // GET: Admin/Index or Admin/ListUsers
+    // GET: User
     public async Task<IActionResult> Index() {
         var users = await _userManager.Users.ToListAsync();
-        return View(users);
+        return View("Index", users);
     }
 
-    // GET: Admin/CreateUser
+    // GET: User/CreateUser
     public IActionResult CreateUser() {
         var model = new UserViewModel {
             Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList(),
@@ -31,7 +31,7 @@ public class AdminController : Controller {
         return View(model);
     }
 
-    // POST: Admin/CreateUser
+    // POST: User/CreateUser
     [HttpPost]
     public async Task<IActionResult> CreateUser(UserViewModel model) {
         if (ModelState.IsValid) {
@@ -55,6 +55,7 @@ public class AdminController : Controller {
         return View(model);
     }
     
+    // GET: User/EditUser
     public async Task<IActionResult> EditUser(string id) {
         var user = await _userManager.FindByIdAsync(id);
         var model = new UserViewModel {
@@ -73,7 +74,7 @@ public class AdminController : Controller {
         return View(model);
     }
     
-    // POST: Admin/EditUser/{id}
+    // POST: User/EditUser/{id}
     [HttpPost]
     public async Task<IActionResult> EditUser(UserViewModel model) {
         if (!ModelState.IsValid) {
@@ -116,21 +117,21 @@ public class AdminController : Controller {
         return View(model);
     }
     
-    // GET: Admin/ConfirmDeleteUser/{id}
+    // GET: User/ConfirmDeleteUser/{id}
     public async Task<IActionResult> ConfirmDeleteUser(string id) {
         var user = await _userManager.FindByIdAsync(id);
         if (user == null) {
             return NotFound();
         }
         
-        var viewModel = new UserViewModel {
+        var model = new UserViewModel {
             Email = user.Email,
         };
 
-        return View(viewModel);
+        return View(model);
     }
     
-    // POST: Admin/DeleteUser/{id}
+    // POST: User/DeleteUser/{id}
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteUserConfirmed(string id) {
@@ -139,6 +140,6 @@ public class AdminController : Controller {
             await _userManager.DeleteAsync(user);
         }
 
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction("Index");
     }
 }
