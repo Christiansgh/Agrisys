@@ -1,8 +1,10 @@
+//Stub to test button highlighting
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agrisys.Controllers;
 
-public class HomeController : Controller {
+public class EditController : Controller {
     public ViewResult Index() {
         return View();
     }

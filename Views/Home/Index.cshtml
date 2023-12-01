@@ -1,8 +1,82 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+Layout = "_Base";
 }
+<nav>
+    <ul>
+        <a href="/" class="active">
+            <img src="/svg/navbar/home.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <a href="/Edit/">
+            <img src="/svg/navbar/edit.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Target/">
+            <img src="/svg/navbar/target.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Admin/">
+            <img src="/svg/navbar/admin.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Language/">
+            <img src="/svg/navbar/language.svg" />
+        </a>
+        <img src="/svg/navbar/bar.svg" />
+
+        <a href="/Log/">
+            <img src="/svg/navbar/log.svg" />
+        </a>
+
+        <a href="/Login/" style="float: right;">
+            <img src="/svg/navbar/logout.svg" />
+        </a>
+    </ul>
+</nav>
+<div id="system">
+    <div>
+        <div id="silo">
+            <img src="/svg/system/silo.svg" alt="a silo" width="75">
+            <div class="system-text">Silo 1</div>
+        </div>
+        <img id="silopipe" src="/svg/system/silopipe.svg" alt="a silopipe" width="300">
+        <div id="mixer">
+            <img src="/svg/system/hopper.svg" alt="a hopper" width="100">
+            <div class="system-text">Mixer</div>
+        </div>
+        <img id="hatch" src="/svg/system/hatch.svg" alt="a hatch" width="235">
+        <div id="distributor">
+            <img src="/svg/system/hopper.svg" alt="a hopper" width="100">
+            <div class="system-text">Distributor</div>
+        </div>
+        <img id="hatch2" src="/svg/system/hatch.svg" alt="a hatch" width="235">
+        <div id="pressure">
+            <img src="/svg/system/pressure.svg" alt="a pressure sensor" width="100">
+            <div class="system-text">Barmåler</div>
+        </div>
+        <div id="fan">
+            <img src="/svg/system/fan.svg" alt="a fan" width="75">
+            <div class="system-text">Blæser</div>
+        </div>
+        <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe" width="640">
+        <div id="target">
+            <img src="/svg/system/target.svg" alt="the target" width="150">
+            <div class="system-text">Target</div>
+        </div>
+    </div>
+    <div id="logbackground">
+        <p style="line-height: 4; margin-left: 25px">
+            [2023-11-27 12:34:56] INFO: Application started. <br>
+            [2023-11-27 12:35:02] WARNING: Connection timeout. <br>
+            [2023-11-27 12:36:18] ERROR: Database connection failed. <br>
+            [2023-11-27 12:37:45] INFO: User logged in (username: johndoe). <br>
+            [2023-11-27 12:38:20] DEBUG: Processing data complete. <br>
+            [2023-11-27 12:39:55] ERROR: File not found: example.txt. <br>
+            [2023-11-27 12:40:10] INFO: Application closed. <br>
+        </p>
+    </div>
 </div>
