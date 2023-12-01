@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Agrisys.Controllers;
 
 public class LoggingController : Controller {
-    public IActionResult Index() {
+    public ViewResult Index() {
         var logData = Logger.Read();
         ViewData["LogColumnCount"] = logData.columnCount;
         ViewData["LogRows"] = logData.data;
