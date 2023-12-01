@@ -24,7 +24,8 @@ public class AdminController : Controller {
     // GET: Admin/CreateUser
     public IActionResult CreateUser() {
         var model = new UserViewModel {
-            Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList()
+            Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList(),
+            Farms = new List<SelectListItem>() // TODO: Get list of farms from db here
         };
 
         return View(model);
