@@ -1,13 +1,58 @@
+@{
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+}
+
 <!DOCTYPE html>
-
 <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <a id="navigation-home" asp-action="Index" asp-controller="Home">
+                    <img src="/svg/navbar/home.svg" />
+                </a>
+                <img src="/svg/navbar/bar.svg" />
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="/css/style.css" />
-</head>
+                <a id="navigation-edit" asp-action="Index" asp-controller="Edit">
+                    <img src="/svg/navbar/edit.svg" />
+                </a>
+                <img src="/svg/navbar/bar.svg" />
 
-<body>
-    @RenderBody()
-</body>
+                <a id="navigation-target" asp-action="Index" asp-controller="Target">
+                    <img src="/svg/navbar/target.svg" />
+                </a>
+                <img src="/svg/navbar/bar.svg" />
+
+                <a id="navigation-admin" asp-action="Index" asp-controller="Admin">
+                    <img src="/svg/navbar/admin.svg" />
+                </a>
+                <img src="/svg/navbar/bar.svg" />
+
+                <a id="navigation-language" asp-action="Index" asp-controller="Language">
+                    <img src="/svg/navbar/language.svg" />
+                </a>
+                <img src="/svg/navbar/bar.svg" />
+
+                <a id="navigation-logging" asp-action="Index" asp-controller="Logging">
+                    <img src="/svg/navbar/log.svg" />
+                </a>
+
+                <a id="navigation-login" asp-action="Index" asp-controller="Login" style="float: right;">
+                    <img src="/svg/navbar/logout.svg" />
+                </a>
+            </ul>
+        </nav>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById(("navigation-" + "@controllerName").toLowerCase()).classList.add("active");
+            }, false);
+        </script>
+
+        @RenderBody()
+    </body>
+</html>
