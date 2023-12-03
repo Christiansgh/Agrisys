@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text;
 
 namespace Agrisys.Utils {
     public static class Logger {
@@ -25,15 +26,15 @@ namespace Agrisys.Utils {
         }
 
         //public static List<List<string>> Read() {
-            public static dynamic Read() {
+        public static dynamic Read() {
             var files = Directory.GetFiles(Folder);
 
             var output = new List<List<string>>();
             var columns = 0;
-            
+
             foreach (var file in files) {
                 var lines = File.ReadAllLines(file);
-                var entry = new List<string>{Path.GetFileName(file)};
+                var entry = new List<string> { Path.GetFileName(file) };
 
                 foreach (var line in lines) {
                     var items = line.Split('|');
@@ -50,6 +51,31 @@ namespace Agrisys.Utils {
             }
 
             return new { columnCount = columns, data = output };
+        }
+
+        public static List<string> ReadStrings() {
+            var files = Directory.GetFiles(Folder);
+
+            var output = new List<string>();
+
+            foreach (var file in files) {
+                var lines = File.ReadAllLines(file);
+                var entry = new List<string> { Path.GetFileName(file) };
+
+                foreach (var line in lines) {
+                    var items = line.Split('|');
+                    var linebuilder = new StringBuilder();
+
+                    foreach (var item in items) {
+                        _ = linebuilder.Append(item);
+                    }
+
+                    output.Add(linebuilder.ToString());
+                    _ = linebuilder.Clear();
+                }
+            }
+
+            return output;
         }
     }
 }
