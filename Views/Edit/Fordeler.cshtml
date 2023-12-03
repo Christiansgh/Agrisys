@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "_Base";
+}
+
+<link rel="stylesheet" href="/css/bootstrap.css" />
+
+<style>
+    nav {
+        position: initial !important;
+    }
+</style>
+
+    <div>
+        Dette er vores Fordeler
+    </div>
+
+    <section id="menu">
+        <div class="container">
+            <div class="container-lg">
+                <div class="row justify-content-center class align-items-center">
+                    <div class="col-md-5 text-center text-md-start">
+                        <div class="container">
+                            <a class="btn btn-primary mt-3" asp-action="Silo">Silo</a>
+
+
+                            <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
+
+
+                            <a class="btn btn-primary btn-lg mt-3 active" asp-action="Fordeler">Fordeler</a>
+                            <div class="container">
+                                <br>
+                                <br>
+                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
+                                <button class=" btn btn-lg btn-success">OK</button>
+
+                            </div>
+                            <br>
+
+                            <br>
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Blæser</button>
+                                @Html.DropDownList("Id", ViewBag.BlæserSelectedList as SelectList,
+                                "Indstil lufttryk", new { @class ="form-control"})
+
+                            </div>
+                            <br>
+                           
+                            <br>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <img class="img-fluid" src="/Images/FordelerFoderkøkken.jpg">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
