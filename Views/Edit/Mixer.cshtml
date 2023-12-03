@@ -1,83 +1,78 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "_Base";
 }
 
-<!DOCTYPE html>
-<html>
+<link rel="stylesheet" href="/css/bootstrap.css" />
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>HovedMenu</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-    <div>
-        Dette er vores Mixer
-    </div>
+<style>
+    nav {
+        position: initial !important;
+    }
+</style>
 
-    <section id="menu">
-        <div class="container">
-            <div class="container-lg">
-                <div class="row justify-content-center class align-items-center">
-                    <div class="col-md-5 text-center text-md-start">
+<div>
+    Dette er vores Mixer
+</div>
+
+<section id="menu">
+    <div class="container">
+        <div class="container-lg">
+            <div class="row justify-content-center class align-items-center">
+                <div class="col-md-5 text-center text-md-start">
+                    <div class="container">
+                        <a class="btn btn-primary mt-3" asp-action="Silo">Silo</a>
+
+
+                        <a class="btn btn-primary btn-lg mt-3 active" asp-action="Mixer">Mixer</a>
+
+
+                        <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
                         <div class="container">
-                            <a class="btn btn-primary mt-3" asp-action="Silo">Silo</a>
-
-
-                            <a class="btn btn-primary btn-lg mt-3 active" asp-action="Mixer">Mixer</a>
-
-
-                            <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
-                            <div class="container">
                             <br>
                             <br>
-                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
-                                <button class=" btn btn-lg btn-success">OK</button>
-
-                            </div>
                             <br>
-                            <div class="container">
-                               
-                               <div class="container">
-                                    <button class="btn btn-sm btn-secondary">Fodermix</button>
-                                    @Html.DropDownList("Id", ViewBag.MixSelectedList as SelectList,
-                                    "Vælg Foderblanding", new { @class ="form-control"})
-                                    <br>
-                                    
-                                </div>
+                            <button class=" btn btn-lg btn-danger">Afbryd!</button>
+                            <button class=" btn btn-lg btn-success">OK</button>
 
-                                <div class="container">
-                                    <button class="btn btn-sm btn-secondary">Omrører</button>
-                                    @Html.DropDownList("Id", ViewBag.OmrørerSelectedList as SelectList,
-                                    "Vælg tidsangivelse", new { @class ="form-control"})
-                                    <br>
-                                 
-                                </div>
-
-                                <div class="container">
-                                    <button class="btn btn-sm btn-secondary">Hastighed</button>
-                                    @Html.DropDownList("Id", ViewBag.SpeedSelectedList as SelectList,
-                                    "Vælg hastighed", new { @class ="form-control"})
-                                    <br>
-
-                                </div>
-
-                                
-                            </div>
-                            <br>
                         </div>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <img class="img-fluid" src="/images/mixerfoderkøkken.jpg">
-                    </div>
+                        <br>
+                        <div class="container">
 
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Fodermix</button>
+                                @Html.DropDownList("Id", ViewBag.MixSelectedList as SelectList,
+                                "Vælg Foderblanding", new { @class ="form-control"})
+                                <br>
+
+                            </div>
+
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Omrører</button>
+                                @Html.DropDownList("Id", ViewBag.OmrørerSelectedList as SelectList,
+                                "Vælg tidsangivelse", new { @class ="form-control"})
+                                <br>
+
+                            </div>
+
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Hastighed</button>
+                                @Html.DropDownList("Id", ViewBag.SpeedSelectedList as SelectList,
+                                "Vælg hastighed", new { @class ="form-control"})
+                                <br>
+
+                            </div>
+
+
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <img class="img-fluid" src="/images/mixerfoderkøkken.jpg">
                 </div>
 
             </div>
-        </div>
-    </section>
 
-</body>
-</html>
+        </div>
+    </div>
+</section>
