@@ -1,3 +1,51 @@
-@{
+﻿@{
     Layout = "_Base";
 }
+
+<link rel="stylesheet" href="/css/bootstrap.css" />
+
+<style>
+    nav {
+        position: initial !important;
+    }
+</style>
+
+<div>
+    Dette er vores Hovedmenú
+</div>
+
+<section id="menu">
+    <div class="container">
+        <div class="container-lg">
+            <div class="row justify-content-center class align-items-center">
+                <div class="col-md-5 text-center text-md-start">
+                    <div class="container">
+                        <a class="btn btn-primary mt-3" asp-action="Silo">Silo</a>
+
+
+                        <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
+
+
+                        <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
+                        <div class="container">
+                            <br>
+                            <br>
+                            <button class=" btn btn-lg btn-danger">Stop!</button>
+                            <button class=" btn btn-lg btn-success">Start</button>
+
+                        </div>
+                        <br>
+
+
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <img class="img-fluid" src="/Images/Foderkøkken.jpg">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+

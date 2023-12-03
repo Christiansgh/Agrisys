@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_Base";
+}
+
+<link rel="stylesheet" href="/css/bootstrap.css" />
+
+<style>
+    nav {
+        position: initial !important;
+    }
+</style>
+
+    <div>
+        Dette er vores Silo
+    </div>
+
+    <section id="menu">
+        <div class="container">
+            <div class="container-lg">
+                <div class="row justify-content-center class align-items-center">
+                    <div class="col-md-5 text-center text-md-start">
+                        <div class="container">
+                            <a class="btn btn-primary btn-lg mt-3 active" asp-action="Silo">Silo</a>
+
+
+                            <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
+
+
+                            <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
+                            <div class="container">
+                                <br>
+                                <br>
+                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
+                                <button type="submit">"OK"</button>
+
+                            </div>
+                            <br>
+                            <div class="container">
+                                 <button class="btn btn-sm btn-secondary">Silo Nr</button>
+                                @Html.DropDownList("Id", ViewBag.FoderSelectedList as SelectList,
+                                "Vælg Silo", new { @class ="form-control"})   
+                            </div>
+
+                            <div class="container">
+                                <button class="btn btn-sm btn-secondary">Portion</button> 
+                                @Html.DropDownList("Nr", ViewBag.PortionSelectedList as SelectList,
+                                "Vælg portion", new { @class ="form-control"})
+                                <br>
+                                <button class="btn btn-sm btn-secondary">Total vægt</button>
+                            </div>
+                                                        
+                        </div>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <img class="img-fluid" src="/Images/SiloFoderkøkken.jpg">
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+ 
