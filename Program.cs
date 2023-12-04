@@ -21,6 +21,9 @@ builder.Services.AddDbContext<IdentityContext>(opts => {
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<IdentityContext>();
 
+// Register repository
+builder.Services.AddScoped<IRepository, EFRepository>();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope()) {
