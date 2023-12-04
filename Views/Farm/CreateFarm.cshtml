@@ -1,17 +1,28 @@
 ﻿@model Agrisys.Models.FarmViewModel
 
-<h2>Create Farm</h2>
+@{
+    Layout = "_Base";
+}
 
-<form asp-action="CreateFarm" method="post" class="m-2">
-    @Html.AntiForgeryToken()
-    <div asp-validation-summary="All" class="text-danger"></div>
+<style>
+    nav { position: initial !important; }
+    #container { padding: 50px; }
+</style>
 
-    <div class="form-group">
-        <label asp-for="Name" class="form-label">Name</label>
-        <input asp-for="Name" class="form-control"/>
-    </div>
+<div id="container">
+    <h2>Create Farm</h2>
 
-    <div>
-        <button type="submit" class="btn btn-primary">Create</button>
-    </div>
-</form>
+    <form asp-action="CreateFarm" method="post" class="m-2">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control"/>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>

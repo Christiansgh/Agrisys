@@ -2,31 +2,38 @@
 
 @{
     ViewData["Title"] = "Farm Management";
+    Layout = "_Base";
 }
 
-<h2>@ViewData["Title"]</h2>
+<style>
+    nav { position: initial !important; }
+    #container { padding: 50px; }
+</style>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Farm</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var farm in Model)
-    {
+<div id="container">
+    <h2>@ViewData["Title"]</h2>
+
+    <table class="table">
+        <thead>
         <tr>
-            <td>@farm.Name</td>
-            <td>
-                <a asp-action="EditFarm" asp-route-id="@farm.Id" class="btn btn-primary">Edit</a>
-                <a asp-action="ConfirmDeleteFarm" asp-route-id="@farm.Id" class="btn btn-danger">Delete</a>
-            </td>
+            <th>Farm</th>
+            <th>Actions</th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var farm in Model) {
+            <tr>
+                <td>@farm.Name</td>
+                <td>
+                    <a asp-action="EditFarm" asp-route-id="@farm.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="ConfirmDeleteFarm" asp-route-id="@farm.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
 
-<div>
-    <a asp-action="CreateFarm" class="btn btn-primary">Create farm</a>
+    <div>
+        <a asp-action="CreateFarm" class="btn btn-primary">Create farm</a>
+    </div>
 </div>

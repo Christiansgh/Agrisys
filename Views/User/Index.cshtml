@@ -2,31 +2,38 @@
 
 @{
     ViewData["Title"] = "User Management";
+    Layout = "_Base";
 }
 
-<h2>@ViewData["Title"]</h2>
+<style>
+    nav { position: initial !important; }
+    #container { padding: 50px; }
+</style>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Email</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in Model)
-    {
+<div id="container">
+    <h2>@ViewData["Title"]</h2>
+
+    <table class="table">
+        <thead>
         <tr>
-            <td>@user.Email</td>
-            <td>
-                <a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
-                <a asp-action="ConfirmDeleteUser" asp-route-id="@user.Id" class="btn btn-danger">Delete</a>
-            </td>
+            <th>Email</th>
+            <th>Actions</th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var user in Model) {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="ConfirmDeleteUser" asp-route-id="@user.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
 
-<div>
-    <a asp-action="CreateUser" class="btn btn-primary">Create user</a>
+    <div>
+        <a asp-action="CreateUser" class="btn btn-primary">Create user</a>
+    </div>
 </div>
