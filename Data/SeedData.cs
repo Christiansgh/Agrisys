@@ -12,7 +12,7 @@ namespace Agrisys.Data {
                 context.Database.Migrate();
             }
         }
-
+    
         public static void SeedRoles(RoleManager<IdentityRole> roleManager) {
             if (!roleManager.RoleExistsAsync("Admin").Result) {
                 var role = new IdentityRole {

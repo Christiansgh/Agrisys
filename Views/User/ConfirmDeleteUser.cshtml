@@ -1,0 +1,17 @@
+﻿@model Agrisys.Models.UserViewModel
+
+<style>
+    nav { position: initial !important; }
+    #container { padding: 50px; }
+</style>
+
+<div id="container">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete user @Model.Email?</p>
+
+    <form asp-action="DeleteUserConfirmed" method="post">
+        <input type="hidden" asp-for="Id"/>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
