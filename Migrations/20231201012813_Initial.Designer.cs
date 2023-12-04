@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Agrisys.Migrations.Identity
+namespace Agrisys.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20231121130450_InitialIdentity")]
-    partial class InitialIdentity
+    [Migration("20231201012813_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

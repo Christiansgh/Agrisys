@@ -1,31 +1,21 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Agrisys.Models;
 
 namespace Agrisys.Controllers;
 
-public class HomeController : Controller
-{
-    private readonly ILogger<HomeController> _logger;
+public class HomeController : Controller {
+    public ViewResult Index() {
+        string[] logMessages =  {
+            "[2023-11-27 12:34:56] INFO: Application started.",
+            "[2023-11-27 12:35:02] WARNING: Connection timeout.",
+            "[2023-11-27 12:36:18] ERROR: Database connection failed.",
+            "[2023-11-27 12:37:45] INFO: User logged in (username: johndoe).",
+            "[2023-11-27 12:38:20] DEBUG: Processing data complete.",
+            "[2023-11-27 12:39:55] ERROR: File not found: example.txt.",
+            "[2023-11-27 12:40:10] INFO: Application closed."
+        };
 
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View("Index", logMessages);
     }
 }
