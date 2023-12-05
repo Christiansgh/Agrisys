@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace Agrisys.Controllers;
 
 public class FarmController : Controller {
-    private readonly IRepository _db;
+    private readonly IRepository _repository;
 
     public FarmController(IRepository repository) {
-        _db = repository;
+        _repository = repository;
     }
 
     // GET: Farm/
     public async Task<IActionResult> Index() {
-        var farms = await _db.GetAllFarmsAsync();
+        var farms = await _repository.GetAllFarmsAsync();
         return View("Index", farms);
     }
 
@@ -28,7 +28,7 @@ public class FarmController : Controller {
     public async Task<IActionResult> CreateFarm(FarmViewModel model) {
         if (ModelState.IsValid) {
             var farm = new Farm(model.Name!);
-            await _db.AddFarmAsync(farm);
+            await _repository.AddFarmAsync(farm);
         }
 
         return RedirectToAction("Index");
@@ -36,7 +36,7 @@ public class FarmController : Controller {
     
     // GET: Farm/EditFarm
     public async Task<IActionResult> EditFarm(int id) {
-        var farm = await _db.GetFarmByIdAsync(id);
+        var farm = await _repository.GetFarmByIdAsync(id);
         var model = new FarmViewModel {
             Id = id,
             Name = farm.Name
@@ -52,21 +52,21 @@ public class FarmController : Controller {
             return View(model);
         }
         
-        var farm = await _db.GetFarmByIdAsync(model.Id);
+        var farm = await _repository.GetFarmByIdAsync(model.Id);
 
 
         // Update farm properties
         farm.Name = model.Name!;
 
         // Update the farm
-        await _db.UpdateFarmAsync(farm);
+        await _repository.UpdateFarmAsync(farm);
 
         return RedirectToAction("Index");
     }
 
     // GET: Farm/ConfirmDeleteFarm/{id}
     public async Task<IActionResult> ConfirmDeleteFarm(int id) {
-        var farm = await _db.GetFarmByIdAsync(id);
+        var farm = await _repository.GetFarmByIdAsync(id);
         var model = new FarmViewModel {
             Name = farm.Name,
         };
@@ -78,8 +78,8 @@ public class FarmController : Controller {
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteFarmConfirmed(int id) {
-        var farm = await _db.GetFarmByIdAsync(id);
-        await _db.DeleteFarmAsync(id);
+        var farm = await _repository.GetFarmByIdAsync(id);
+        await _repository.DeleteFarmAsync(id);
 
         return RedirectToAction("Index");
     }

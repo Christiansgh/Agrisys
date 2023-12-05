@@ -10,6 +10,6 @@ public class UserViewModel {
     public string? Password { get; set; }
     public string? SelectedRole { get; set; }
     public List<SelectListItem> Roles { get; set; } = new();
-    public string? SelectedFarm { get; set; }
+    public List<string> SelectedFarms { get; set; } = new();
     public List<SelectListItem> Farms { get; set; } = new();
 }
