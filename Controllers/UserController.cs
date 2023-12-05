@@ -1,4 +1,5 @@
-﻿using Agrisys.Models;
+﻿using Agrisys.Data;
+using Agrisys.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,10 +10,12 @@ namespace Agrisys.Controllers;
 public class UserController : Controller {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly IRepository _db;
 
-    public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) {
+    public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IRepository repository) {
         _userManager = userManager;
         _roleManager = roleManager;
+        _db = repository;
     }
 
     // GET: User
@@ -23,9 +26,13 @@ public class UserController : Controller {
 
     // GET: User/CreateUser
     public IActionResult CreateUser() {
+        var farms = _db.GetAllFarmsAsync().Result
+            .Select(f => new SelectListItem { Value = f.Id.ToString(), Text = f.Name })
+            .ToList();
+        
         var model = new UserViewModel {
             Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList(),
-            Farms = new List<SelectListItem>() // TODO: Get list of farms from db here
+            Farms = farms
         };
 
         return View(model);
@@ -36,21 +43,31 @@ public class UserController : Controller {
     public async Task<IActionResult> CreateUser(UserViewModel model) {
         if (ModelState.IsValid) {
             var user = new IdentityUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
-            var result = await _userManager.CreateAsync(user, model.Password!);
+            var createUserResult = await _userManager.CreateAsync(user, model.Password!);
 
-            if (result.Succeeded && !string.IsNullOrEmpty(model.SelectedRole)) {
-                await _userManager.AddToRoleAsync(user, model.SelectedRole);
+            if (createUserResult.Succeeded) {
+                if (!string.IsNullOrEmpty(model.SelectedRole)) {
+                    await _userManager.AddToRoleAsync(user, model.SelectedRole);
+                }
+
+                if (!string.IsNullOrEmpty(model.SelectedFarm)) {
+                    var farmId = int.Parse(model.SelectedFarm);
+                    await _db.AssignUserToFarm(user.Id, farmId);
+                }
+
                 return RedirectToAction("Index");
             }
 
-            foreach (var error in result.Errors) {
+            foreach (var error in createUserResult.Errors) {
                 ModelState.AddModelError("", error.Description);
-                Console.WriteLine(error.Description);
             }
         }
         
         // Repopulate roles if returning to form
         model.Roles = _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToList();
+        model.Farms = _db.GetAllFarmsAsync().Result
+            .Select(f => new SelectListItem { Value = f.Id.ToString(), Text = f.Name })
+            .ToList();
 
         return View(model);
     }
