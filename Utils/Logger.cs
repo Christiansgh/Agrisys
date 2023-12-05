@@ -53,10 +53,9 @@ namespace Agrisys.Utils {
             return new { columnCount = columns, data = output };
         }
 
-        public static List<string> ReadStrings() {
+        public static string ReadStrings() {
             var files = Directory.GetFiles(Folder);
-
-            var output = new List<string>();
+            var linebuilder = new StringBuilder();
 
             foreach (var file in files) {
                 var lines = File.ReadAllLines(file);
@@ -64,18 +63,15 @@ namespace Agrisys.Utils {
 
                 foreach (var line in lines) {
                     var items = line.Split('|');
-                    var linebuilder = new StringBuilder();
 
                     foreach (var item in items) {
                         _ = linebuilder.Append(item);
                     }
-
-                    output.Add(linebuilder.ToString());
-                    _ = linebuilder.Clear();
+                    _ = linebuilder.AppendLine();
                 }
             }
 
-            return output;
+            return linebuilder.ToString();
         }
     }
 }

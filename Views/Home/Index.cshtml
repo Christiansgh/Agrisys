@@ -1,10 +1,11 @@
-@model IEnumerable<string>
+@model Agrisys.Models.HomeViewModel
 
 <div id="system">
     <div>
         <div id="silo">
             <img src="/svg/system/silo.svg" alt="a silo" width="75">
             <div class="system-text">Silo 1</div>
+            
         </div>
         <img id="silopipe" src="/svg/system/silopipe.svg" alt="a silopipe" width="300">
         <div id="mixer">
@@ -32,11 +33,6 @@
         </div>
     </div>
     <div id="logbackground" >
-            <ul>
-                 @foreach (string message in Model!) {
-                    <li> @message </li>
-                }
-            </ul>
-        }
+        Model.LogMessages
     </div>
 </div>
