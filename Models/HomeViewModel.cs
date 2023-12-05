@@ -5,6 +5,8 @@ namespace Agrisys.Models;
 public class HomeViewModel {
     public int HomeViewModelId { get; set; }
 
+    public string? LogMessages { get; set; }
+
     public double? SiloAmount { get; set; }
     public State? SiloState { get; set; }
 

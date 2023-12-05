@@ -15,23 +15,6 @@ public class HomeController : Controller {
 
     public ViewResult Index() {
         var homeViewModel = _repository.GetHomeViewModel();
-
-        //            new HomeViewModel {
-        //            LogMessages = Logger.ReadStrings(),
-        //            SiloAmount = 12.1,
-        //            SiloState = State.InProgress,
-        //            MixerAmount = 3,
-        //            MixerState = State.InProgress,
-        //            HatchOneState = State.Awaiting,
-        //            DistributorAmount = 0,
-        //            DistributorState = State.Awaiting,
-        //            HatchTwoState = State.Awaiting,
-        //            FanAmount = 0,
-        //            FanState = State.Awaiting,
-        //            Pressure = 0,
-        //            TargetID = "Target1b25ok"
-        //        };
-
         return View("Index", homeViewModel);
     }
 }
