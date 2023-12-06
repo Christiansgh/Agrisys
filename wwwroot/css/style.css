@@ -50,12 +50,13 @@ body {
 }
 
 #svgs {
-    width: 70%;
+    max-width: 70%;
+    transform: scale(1);
 }
 
 .system-text {
     font-family: "lato";
-    font-size: 1.5vw; /* 1.5% of viewport height */
+    font-size: 1vw; /* 1.5% of viewport height */
     background-color: var(--offwhite);
     border-style: solid;
     border-width: thin;
