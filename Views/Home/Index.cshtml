@@ -1,5 +1,9 @@
 @model Agrisys.Models.HomeViewModel
 
+@{
+    var logMessages = @Model.LogMessages.Split('[');
+}
+
 <div id="system">
     <div id="svgs">
 
@@ -53,8 +57,8 @@
                     <div class="system-text">Blæser</div>
                     <div class="system-field">@Model.FanAmount</div>
                 </div>
-                <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe">
             </div>
+            <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe">
         </div>
 
         <div id="target">
@@ -62,13 +66,19 @@
                 <img src="/svg/system/target.svg" alt="the target">
                 <div class="text-container">
                     <div class="system-text">Target</div>
-                    <div class="system-field">TODO: TargetID</div>
+                    <div class="system-field">TargetID</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="logbackground">
-        @Model.LogMessages
+        <ul>
+        @foreach (string msg in @logMessages) {
+            @if (!String.IsNullOrEmpty(msg)) {
+                <li>[@msg</li>
+            }
+        }
+        </ul>
     </div>
 </div>

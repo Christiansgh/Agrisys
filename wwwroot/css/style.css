@@ -50,7 +50,6 @@ body {
 }
 
 #system {
-    border-style: solid;
     border-color: green;
     display: flex;
     flex-direction: row;
@@ -58,7 +57,6 @@ body {
 
 #svgs {
     flex: 2;
-    border-style: solid;
     border-color: blue;
     margin-top: 2vw;
     margin-left: 2vw;
@@ -92,7 +90,6 @@ body {
     align-items: center;
     text-align: center;
     z-index: 1;
-    border-style: solid;
     border-color: purple;
     max-width: 5vw;
     position: relative;
@@ -101,7 +98,6 @@ body {
 .machine-container {
     display: flex;
     flex-direction: column;
-    border-style: solid;
     border-color: red;
     position: absolute;
 }
@@ -191,8 +187,8 @@ body {
 #pressure .machine-container {
     width: 12vw;
     height: 5vw;
-    top: 37.2vw;
-    left: 10vw;
+    top: 39.2vw;
+    left: 11.3vw;
 }
 
 #pressure .text-container {
@@ -207,41 +203,46 @@ body {
 }
 
 /* Fan */
-#fan img {
-    position: absolute;
-    aspect-ratio: 1;
-    max-width: 8%;
-    margin-top: 45%;
-    margin-left: 3.3%;
+#fan .machine-container {
+    width: 12vw;
+    height: 5vw;
+    top: 40.7vw;
+    left: 2vw;
 }
 
-#fan .system-text {
+#fan .text-container {
+    left: 1.5vw;
+    top: 1vw;
+}
+
+#fanimg {
     position: absolute;
-    margin-top: 47.75%;
-    margin-left: 5.25%;
+    max-width: 70%;
 }
 
 #fanpipe {
     position: absolute;
-    aspect-ratio: 1;
     max-width: 30%;
-    margin-top: 28.25%;
-    margin-left: 10.5%;
+    top: 33.3vw;
+    left: 9.5vw;
 }
 
 /* Target */
-#target img {
-    position: absolute;
-    aspect-ratio: 1;
-    max-width: 10%;
-    margin-top: 44%;
-    margin-left: 39.75%;
+#target .machine-container {
+    width: 20vw;
+    height: 10vw;
+    top: 38.5vw;
+    left: 38.4vw;
 }
 
-#target .system-text {
+#target .text-container {
+    left: 6vw;
+    top: -9vw;
+}
+
+#targetimg {
     position: absolute;
-    margin-left: 43%;
-    margin-top: 48%;
+    max-width: 100%;
 }
 
 /* Log */
@@ -254,4 +255,9 @@ body {
     background-color: #DBE4EE;
     float: right;
     filter: drop-shadow(15px 15px 25px #444444);
+}
+
+#logbackground li {
+    list-style: none;
+    font-family: monospace;
 }
