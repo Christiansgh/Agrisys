@@ -6,15 +6,15 @@
     --orange: #F17300;
 }
         
-
+/* Nav topbar */
 nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     right: 0;
     left: 0;
     background-color: var(--darkblue);
     filter: drop-shadow(0px 2px 10px #444444);
-    z-index: 1;
+    z-index: 2;
 }
 
 nav ul {
@@ -42,110 +42,171 @@ nav a:hover {
     opacity: 0.9;
 }
 
-
+/* Containers */
 body {
     background-color: var(--offwhite);
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
+#system {
+    border-style: solid;
+    border-color: green;
+    display: flex;
+    flex-direction: row;
+}
+
 #svgs {
-    width: 70%;
+    flex: 2;
+    border-style: solid;
+    border-color: blue;
+    margin-top: 2vw;
+    margin-left: 2vw;
 }
 
 .system-text {
     font-family: "lato";
     font-size: 1.5vw; /* 1.5% of viewport height */
-    background-color: var(--offwhite);
+    background-color: white;
     border-style: solid;
     border-width: thin;
+    margin-bottom: 1vw;
+    padding: 3px;
+    border-radius: 3px;
 }
 
-#silo img {
+.system-field {
+    font-family: "lato";
+    font-size: 1.5vw; /* 1.5% of viewport height */
+    background-color: grey;
+    border-style: solid;
+    border-width: thin;
+    padding: 3px;
+    border-radius: 3px;
+    min-width: 2.5vw;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    border-style: solid;
+    border-color: purple;
+    max-width: 5vw;
+    position: relative;
+}
+
+.machine-container {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: red;
     position: absolute;
-    aspect-ratio: 1;
-    margin-top: 5%;
-    max-width: 15%;
+}
+
+/* Silo */
+#silo .machine-container {
+    width: 10vw;
+    height: 16vw;
+}
+
+#silo .text-container {
+    left: 1.8vw;
+    top: 1vw;
+}
+
+#siloimg{
+    position: absolute;
+    top: -1.75vw;
+    max-width: 90%;
     filter: invert(76%) sepia(57%) saturate(1527%) hue-rotate(54deg) brightness(86%) contrast(96%);
     opacity: 0.8;
-}
-
-#silo .system-text {
-    position: absolute;
-    margin-top: 8%;
-    margin-left: 6%;
+    z-index: 1;
 }
 
 #silopipe {
-    position: absolute;
-    aspect-ratio: 1;
-    max-width: 20%;
-    margin-top: 10%;
-    margin-left: 10%;
+    position: relative;
+    max-width: 30%;
+    top: 11.7vw;
+    left: 8.2vw;
 }
 
-#mixer img {
+/* Mixer */
+#mixer .machine-container {
+    width: 10vw;
+    height: 7.4vw;
+    top: 27vw;
+    left: 23.5vw;
+}
+
+#mixer .text-container {
+    left: 1.9vw;
+    top: 0.4vw;
+}
+
+#mixerimg {
     position: absolute;
-    aspect-ratio: 1;
-    margin-top: 24%;
-    margin-left: 25%;
-    max-width: 10%;
+    max-width: 90%;
     filter: invert(91%) sepia(93%) saturate(2399%) hue-rotate(322deg) brightness(104%) contrast(95%);
     opacity: 0.8;
 }
 
-#mixer .system-text {
-    position: absolute;
-    margin-top: 25%;
-    margin-left: 28%;
-}
-
 #hatch {
     position: absolute;
-    aspect-ratio: 1;
-    margin-top: 24%;
-    margin-left: 21.75%;
-    max-width: 20%;
+    max-width: 100%;
+    top: 6vw;
+    left: 0.5vw;
 }
 
-#distributor img {
+/* Distributor */
+#distributor .machine-container {
+    width: 10vw;
+    height: 7.4vw;
+    top: 36.5vw;
+    left: 23.5vw;
+}
+
+#distributor .text-container {
+    left: 1.8vw;
+    top: 0.2vw;
+}
+
+#distributorimg {
     position: absolute;
-    aspect-ratio: 1;
-    max-width: 10%;
+    max-width: 90%;
     filter: invert(27%) sepia(82%) saturate(1666%) hue-rotate(344deg) brightness(98%) contrast(89%);
     opacity: 0.8;
-    margin-top: 36%;
-    margin-left: 25%;
-}
-
-#distributor .system-text {
-    position: absolute;
-    margin-top: 37%;
-    margin-left: 27%;
 }
 
 #hatch2 {
     position: absolute;
-    aspect-ratio: 1;
-    max-width: 20%;
-    margin-top: 36%;
-    margin-left: 21.75%;
+    max-width: 100%;
+    top: 6vw;
+    left: 0.7vw;
 }
 
-#pressure img {
+/* Pressure */
+#pressure .machine-container {
+    width: 12vw;
+    height: 5vw;
+    top: 37.2vw;
+    left: 10vw;
+}
+
+#pressure .text-container {
+    left: 3vw;
+    top: -0.3vw;
+}
+
+#pressureimg {
     position: absolute;
-    aspect-ratio: 1;
-    max-width: 10%;
-    margin-top: 41%;
-    margin-left: 15%;
+    max-width: 100%;
+    transform: scale(1.3);
 }
 
-#pressure .system-text {
-    position: absolute;
-    margin-top: 45%;
-    margin-left: 17%;
-}
-
+/* Fan */
 #fan img {
     position: absolute;
     aspect-ratio: 1;
@@ -168,6 +229,7 @@ body {
     margin-left: 10.5%;
 }
 
+/* Target */
 #target img {
     position: absolute;
     aspect-ratio: 1;
@@ -182,19 +244,14 @@ body {
     margin-top: 48%;
 }
 
+/* Log */
 #logbackground {
     border-top-style: solid;
     border-color: var(--blue);
     border-width: thin;
-    width: 30%;
-    height: 100%;
+    min-height: 45vw;
+    flex: 1;
     background-color: #DBE4EE;
     float: right;
     filter: drop-shadow(15px 15px 25px #444444);
-}
-
-#logbackground li {
-    font-size: 20px;
-    margin-top: 20px;
-    list-style-type: none;
 }
