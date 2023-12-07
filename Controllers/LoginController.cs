@@ -6,7 +6,7 @@ namespace Agrisys.Controllers;
 
 public class LoginController : Controller {
     public ViewResult Index() {
-        return View("Unimplemented");
+        return View();
     }
 }
 

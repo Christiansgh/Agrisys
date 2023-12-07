@@ -261,3 +261,90 @@ body {
     list-style: none;
     font-family: monospace;
 }
+
+/* Login */
+#login {
+    min-height: 49vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#login #box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw;
+    border-style: solid;
+    border-width: thin;
+    border-color: #d4d4d4;
+    width: 60vw;
+    height: 30vw;
+    background-color: #eeeeee;
+    border-radius: 2vw;
+}
+
+#login img {
+    max-width: 15vw;
+    max-height: 10vw;
+}
+
+#login #fields-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 30vw;
+    height: 15vw;
+}
+
+#fields-container #username,
+#fields-container #password,
+#fields-container #login-btn {
+    border-style: solid;
+    border-width: medium;
+    border-color: white;
+    width: 90%;
+    height: 2vw;
+    border-radius: 3vw;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    transition: 0.5s ease-in-out;
+}
+
+#fields-container #username:hover,
+#fields-container #login-btn:hover,
+#fields-container #password:hover   {
+    border-color: #4663ac;
+    color: #4663ac;
+} 
+
+#fields-container #username:focus,
+#fields-container #login-btn:focus,
+#fields-container #password:focus   {
+    border-color: var(--orange);
+    color: var(--orange);
+    outline: none;
+} 
+
+
+::placeholder {
+    color: white;
+}
+
+:input:focus::placeholder {
+    color: var(--orange);
+}
+
+#fields-container #password,
+#fields-container #username {
+    background-color: #c8d9ed;   
+}
+
+#fields-container #login-btn {
+    background-color: lightblue;
+    min-height: 2.5vw;
+}
