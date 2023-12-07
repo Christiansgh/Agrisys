@@ -1,41 +1,84 @@
-@model IEnumerable<string>
+@model Agrisys.Models.HomeViewModel
+
+@{
+    var logMessages = @Model.LogMessages.Split('[');
+}
 
 <div id="system">
     <div id="svgs">
+
         <div id="silo">
-            <img src="/svg/system/silo.svg" alt="a silo">
-            <div class="system-text">Silo 1</div>
+            <div class="machine-container">
+                <img id="siloimg" src="/svg/system/silo.svg" alt="a silo">
+                <div class="text-container">
+                    <div class="system-text">Silo 1</div>
+                    <div class="system-field">@Model.SiloAmount</div>
+                </div>
+            </div>
+            <img id="silopipe" src="/svg/system/silopipe.svg" alt="a silopipe">
         </div>
-        <img id="silopipe" src="/svg/system/silopipe.svg" alt="a silopipe">
+
         <div id="mixer">
-            <img src="/svg/system/hopper.svg" alt="a hopper">
-            <div class="system-text">Mixer</div>
+            <div class="machine-container">
+                <img id="mixerimg" src="/svg/system/hopper.svg" alt="a hopper">
+                <div class="text-container">
+                    <div class="system-text">Mixer</div>
+                    <div class="system-field">@Model.MixerAmount</div>
+                </div>
+                <img id="hatch" src="/svg/system/hatch.svg" alt="a hatch">
+            </div>
         </div>
-        <img id="hatch" src="/svg/system/hatch.svg" alt="a hatch">
+
         <div id="distributor">
-            <img src="/svg/system/hopper.svg" alt="a hopper">
-            <div class="system-text">Distributor</div>
+            <div class="machine-container">
+                <img id="distributorimg" src="/svg/system/hopper.svg" alt="a hopper">
+                <div class="text-container">
+                    <div class="system-text">Distributor</div>
+                    <div class="system-field">@Model.DistributorAmount</div>
+                </div>
+                <img id="hatch2" src="/svg/system/hatch.svg" alt="a hatch">
+            </div>
         </div>
-        <img id="hatch2" src="/svg/system/hatch.svg" alt="a hatch">
+
         <div id="pressure">
-            <img src="/svg/system/pressure.svg" alt="a pressure sensor">
-            <div class="system-text">Barm�ler</div>
+            <div class="machine-container">
+                <img id="pressureimg" src="/svg/system/pressure.svg" alt="a pressure sensor">
+                <div class="text-container">
+                    <div class="system-text">Barmåler</div>
+                    <div class="system-field">@Model.Pressure</div>
+                </div>
+            </div>
         </div>
+
         <div id="fan">
-            <img src="/svg/system/fan.svg" alt="a fan">
-            <div class="system-text">Bl�ser</div>
+            <div class="machine-container">
+                <img id="fanimg" src="/svg/system/fan.svg" alt="a fan">
+                <div class="text-container">
+                    <div class="system-text">Blæser</div>
+                    <div class="system-field">@Model.FanAmount</div>
+                </div>
+            </div>
+            <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe">
         </div>
-        <img id="fanpipe" src="/svg/system/fanpipe.svg" alt="a fanpipe">
+
         <div id="target">
-            <img src="/svg/system/target.svg" alt="the target">
-            <div class="system-text">Target</div>
+            <div class="machine-container">
+                <img src="/svg/system/target.svg" alt="the target">
+                <div class="text-container">
+                    <div class="system-text">Target</div>
+                    <div class="system-field">TargetID</div>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="logbackground" >
+
+    <div id="logbackground">
         <ul>
-            @foreach (string message in Model!) {
-                <li> @message </li>
+        @foreach (string msg in @logMessages) {
+            @if (!String.IsNullOrEmpty(msg)) {
+                <li>[@msg</li>
             }
+        }
         </ul>
     </div>
 </div>
