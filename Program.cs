@@ -20,7 +20,7 @@ builder.Services.AddDbContext<IdentityContext>(opts => {
 // Add DI for Home
 builder.Services.AddDbContext<HomeDbContext>(opts => {
     _ = opts.UseSqlite(builder.Configuration.GetConnectionString("ConnectionString"));
-});
+}); 
 builder.Services.AddScoped<IHomeRepository, EFHomeRepository>();
 
 // Configure ASP.NET Core Identity
