@@ -8,7 +8,7 @@
 
             public required string Portion { get; set; }
 
-            public string Vægt { get; set; }
+            public required string Vægt { get; set; }
         
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Agrisys.Models.Speed
+@{
     Layout = "_Base";
 }
 
@@ -30,24 +31,42 @@
                             <div class="container">
                                 <br>
                                 <br>
-                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
-                                <button type="submit">"OK"</button>
-
+                                <form asp-action="Silo" method="post">
+                                <a class=" btn btn-lg btn-danger" asp-action="Index">Afbryd!</a>
+                                <button type="submit">"Accepter"</button>
+                                </form>
                             </div>
                             <br>
-                            <div class="container">
-                                 <button class="btn btn-sm btn-secondary">Silo Nr</button>
-                                @Html.DropDownList("Id", ViewBag.FoderSelectedList as SelectList,
-                                "Vælg Silo", new { @class ="form-control"})   
+                        
+                        <div class="container">
+                            <button class="btn btn-sm btn-secondary">Silo Nr</button>
+                            <div>
+                                <select asp-for="SiloIndhold">
+                                    <option value="">vælg foderart</option>
+                                    <option value="1">Byg</option>
+                                    <option value="2">Havre</option>
+                                    <option value="3">Rug</option>
+                                    <option value="4">Hvede</option>
+                                    <option value="Meds">Antibiotikum</option>
+                                </select>
                             </div>
+                        </div>
+                        <br>
+                        <br>
 
-                            <div class="container">
-                                <button class="btn btn-sm btn-secondary">Portion</button> 
-                                @Html.DropDownList("Nr", ViewBag.PortionSelectedList as SelectList,
-                                "Vælg portion", new { @class ="form-control"})
-                                <br>
-                                <button class="btn btn-sm btn-secondary">Total vægt</button>
+                        <div class="container">
+                            <button class="btn btn-sm btn-secondary">Portion</button>
+                            <div>
+                                <select asp-for="SiloPortion">
+                                    <option value="">vælg portionsstørrelse</option>
+                                    <option value="1P">0.5 kg</option>
+                                    <option value="2P">1.0 kg</option>
+                                    <option value="3P">2.0 kg</option>
+                                </select>
                             </div>
+                        </div>
+                        <br>
+                        <br>
                                                         
                         </div>
                     </div>

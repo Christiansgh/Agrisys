@@ -5,8 +5,6 @@
 
         public int Id { get; set; }
 
-        public required string Time { get; set; }
-
-        
+               
     }
 }

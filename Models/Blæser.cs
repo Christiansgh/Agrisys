@@ -2,7 +2,7 @@
 {
     public class Blæser
     {
-        public required int lufttryk { get; set; }
+        public required int Lufttryk { get; set; }
 
     }
 }

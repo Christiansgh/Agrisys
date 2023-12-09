@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Agrisys.Models.Speed
+@{
     Layout = "_Base";
 }
 
@@ -27,22 +28,32 @@
 
 
                             <a class="btn btn-primary btn-lg mt-3 active" asp-action="Fordeler">Fordeler</a>
-                            <div class="container">
-                                <br>
-                                <br>
-                                <button class=" btn btn-lg btn-danger">Afbryd!</button>
-                                <button class=" btn btn-lg btn-success">OK</button>
-
+                        <div class="container">
+                        <br>
+                        <br>
+                            <form asp-action="Fordeler" method="post">
+                                <a class=" btn btn-lg btn-danger" asp-action="Index">Afbryd!</a>
+                                <button type="submit">"Accepter"</button>
+                            </form>
                             </div>
                             <br>
 
                             <br>
-                            <div class="container">
-                                <button class="btn btn-sm btn-secondary">Blæser</button>
-                                @Html.DropDownList("Id", ViewBag.BlæserSelectedList as SelectList,
-                                "Indstil lufttryk", new { @class ="form-control"})
-
+                        <div class="container">
+                            <div>
+                                <button class="btn btn-sm btn-secondary">Lufttryk</button>
                             </div>
+                            <div>
+                                <select asp-for="Fordeler">
+                                    <option value="">vælg lufttryk</option>
+                                    <option value="lavt">3 bar</option>
+                                    <option value="mellem">5 bar</option>
+                                    <option value="højt">8 bar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                             <br>
                            
                             <br>

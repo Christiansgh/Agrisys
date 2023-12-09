@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Agrisys.Models.Speed
+@{
     Layout = "_Base";
 }
 
@@ -31,40 +32,59 @@
                             <br>
                             <br>
                             <br>
-                            <button class=" btn btn-lg btn-danger">Afbryd!</button>
-                            <button class=" btn btn-lg btn-success">OK</button>
-
+                            <form asp-action="Mixer" method="post">
+                                <a class=" btn btn-lg btn-danger" asp-action="Index">Afbryd!</a>
+                                <button type="submit">"Accepter"</button>
+                            </form>
                         </div>
                         <br>
                         <div class="container">
+                        </div>
 
-                            <div class="container">
-                                <button class="btn btn-sm btn-secondary">Fodermix</button>
-                                @Html.DropDownList("Id", ViewBag.MixSelectedList as SelectList,
-                                "Vælg Foderblanding", new { @class ="form-control"})
-                                <br>
-
+                        <div class="container">
+                            <div>
+                                <button class="btn btn-sm btn-secondary">Foderblanding til</button>
                             </div>
-
-                            <div class="container">
-                                <button class="btn btn-sm btn-secondary">Omrører</button>
-                                @Html.DropDownList("Id", ViewBag.OmrørerSelectedList as SelectList,
-                                "Vælg tidsangivelse", new { @class ="form-control"})
-                                <br>
-
+                            <div>
+                                <select asp-for="FoderMix">
+                                    <option value="">vælg foderblanding</option>
+                                    <option value="MF">Smågrise</option>
+                                    <option value="U21">Søer</option>
+                                    <option value="A38">Faregrise</option>
+                                </select>
                             </div>
-
-                            <div class="container">
-                                <button class="btn btn-sm btn-secondary">Hastighed</button>
-                                @Html.DropDownList("Id", ViewBag.SpeedSelectedList as SelectList,
-                                "Vælg hastighed", new { @class ="form-control"})
-                                <br>
-
-                            </div>
-
-
                         </div>
                         <br>
+                        <br>
+                        <div class="container">
+                            <div>
+                                <button class="btn btn-sm btn-secondary">Tid for omrører</button>
+                            </div>
+                            <div>
+                                <select asp-for="Tid">
+                                    <option value="">vælg minuttal</option>
+                                    <option value="kort">3 min</option>
+                                    <option value="mellem">8 min</option>
+                                    <option value="lang">13 min</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="container">
+                            <div>
+                                <button class="btn btn-sm btn-secondary">Hastighed</button>
+                            </div>
+                            <div>
+                                <select asp-for="Hastighed">
+                                    <option value="">vælg hastighed</option>
+                                    <option value="langsom">1 m/sek</option>
+                                    <option value="Middel">5 m/sek</option>
+                                    <option value="Hurtig">10 m/sek</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-5 text-center">
