@@ -1,0 +1,26 @@
+@model Agrisys.Models.LoginViewModel
+
+@{
+Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <div id="login">
+        <div id="box">
+            <img src="/Images/AgrisysLogo.png" alt="">
+            <form asp-action="Login" method="post" class="m-2">
+                <div id="fields-container">
+                    <input name="Username" type="text" placeholder="Indtast Brugernavn">
+                    <input name="Password" type="password" placeholder="Indtast Kodeord">
+                    <button type="submit" id="login-btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
