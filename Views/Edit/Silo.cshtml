@@ -11,35 +11,34 @@
     }
 </style>
 
-    <div>
-        Dette er vores Silo
-    </div>
+<div>
+    Dette er vores Silo
+</div>
 
-    <section id="menu">
-        <div class="container">
-            <div class="container-lg">
-                <div class="row justify-content-center class align-items-center">
-                    <div class="col-md-5 text-center text-md-start">
+<section id="menu">
+    <div class="container">
+        <div class="container-lg">
+            <div class="row justify-content-center class align-items-center">
+                <div class="col-md-5 text-center text-md-start">
+                    <div class="container">
+                        <a class="btn btn-primary btn-lg mt-3 active" asp-action="Silo">Silo</a>
+
+
+                        <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
+
+
+                        <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
                         <div class="container">
-                            <a class="btn btn-primary btn-lg mt-3 active" asp-action="Silo">Silo</a>
-
-
-                            <a class="btn btn-primary mt-3" asp-action="Mixer">Mixer</a>
-
-
-                            <a class="btn btn-primary mt-3" asp-action="Fordeler">Fordeler</a>
-                            <div class="container">
-                                <br>
-                                <br>
-                                <form asp-action="Silo" method="post">
+                            <br>
+                            <br>
+                            <form asp-action="Silo" method="post">
                                 <a class=" btn btn-lg btn-danger" asp-action="Index">Afbryd!</a>
                                 <button type="submit">"Accepter"</button>
-                                </form>
-                            </div>
+                            </form>
                             <br>
-                        
-                        <div class="container">
-                            <button class="btn btn-sm btn-secondary">Silo Nr</button>
+                            <div>
+                                <button class="btn btn-sm btn-secondary">Silo Nr</button>
+                            </div>
                             <div>
                                 <select asp-for="SiloIndhold">
                                     <option value="">vælg foderart</option>
@@ -49,7 +48,9 @@
                                     <option value="4">Hvede</option>
                                     <option value="Meds">Antibiotikum</option>
                                 </select>
+
                             </div>
+
                         </div>
                         <br>
                         <br>
@@ -67,18 +68,17 @@
                         </div>
                         <br>
                         <br>
-                                                        
-                        </div>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <img class="img-fluid" src="/Images/SiloFoderkøkken.jpg">
-                    </div>
 
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <img class="img-fluid" src="/Images/SiloFoderkøkken.jpg">
                 </div>
 
-
             </div>
-        </div>
-    </section>
 
- 
+
+        </div>
+    </div>
+</section>
+

@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Agrisys.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
+
 
 
 namespace Agrisys.Controllers;
@@ -42,11 +43,11 @@ public class EditController : Controller
     }
 
 
-    public ViewResult Silo()
-    {
-        return View();
+    //public ViewResult Silo()
+    //{
+    //    return View();
 
-    }
+    //}
 
 
     public ViewResult Mixer()
@@ -62,18 +63,24 @@ public class EditController : Controller
 
 
     [HttpGet]
-    public IActionResult Speed() 
+    public ViewResult Silo() 
     {
-        return RedirectToAction();
+        return View();
     }
 
     [HttpPost]
-    public IActionResult Silo(DropOption silo) 
-    { 
-        
-        return RedirectToAction();
+    public ViewResult Silo(DropOption dropOption) 
+    {
+        Repository.AddResponse(dropOption);
+
+        return View("Bekræft", dropOption);
         
     }
+    public ViewResult ListDropOption()
+    {
+        return View(Repository.DropOption.Where(r => r.SiloIndhold == true));
+    }
+
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

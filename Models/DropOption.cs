@@ -9,5 +9,7 @@
         public bool? Fordeler { get; set; }
         public bool? SiloIndhold { get; set; }
         public bool? SiloPortion { get; set; }
+
+        
     }
 }

@@ -1,0 +1,26 @@
+﻿@model Agrisys.Models.DropOption
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Bekræft</title>
+</head>
+<body>
+    <div>
+        <h1>Du har valgt følgende fra Silo 1: **** @Model?.SiloIndhold!</h1>
+        @if (Model?.SiloIndhold == true)
+        {
+            @:Tak fordi du bruger AgriSys!
+        }
+        else
+        {
+            @:Tak fordi du bruger AgriSys!
+        }
+    </div>
+   @*  Click
+    <a asp-action="ListResponses">here</a> to see who is coming. *@
+</body>
+</html>
