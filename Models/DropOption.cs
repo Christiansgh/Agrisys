@@ -1,6 +1,6 @@
 ﻿namespace Agrisys.Models
 {
-    public class Speed
+    public class DropOption
     {
         public int Id { get; set; }
         public bool? Hastighed { get; set; }

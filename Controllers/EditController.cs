@@ -62,13 +62,13 @@ public class EditController : Controller
 
 
     [HttpGet]
-    public IActionResult SiloIndhold() 
+    public IActionResult Speed() 
     {
         return RedirectToAction();
     }
 
     [HttpPost]
-    public IActionResult Silo(SiloIndhold silo) 
+    public IActionResult Silo(DropOption silo) 
     { 
         
         return RedirectToAction();
